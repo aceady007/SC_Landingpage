@@ -600,6 +600,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
     }
       */
 
+
     .faq-container {
       max-width: 900px;
       margin: 0 auto;
@@ -642,6 +643,36 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       color: var(--gold);
   }
 
+
+
+    #faq {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+  }
+
+    #faq::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+
+    background-image:
+      linear-gradient(
+      rgba(0,0,0,0.85),
+      rgba(0,0,0,0.85)
+    ),
+    url('images/faq.JPG');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #faq > * {
+    position: relative;
+    z-index: 1;
+  }
     /* ─────────────────────────────────────────
        ADMIN PANEL (hidden, toggle with button)
     ───────────────────────────────────────── */
@@ -814,6 +845,57 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
 
       .hero-meta { gap: 1.5rem; }
     }
+
+    /*_______
+     day 2 and day 3 background 
+     _________*/
+      .day2-bg,
+      .day3-bg {
+        position: relative;
+        overflow: hidden;
+        border-radius: 24px;
+        padding: 40px;
+        margin-bottom: 40px;
+    }
+
+      .day2-bg::before,
+      .day3-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+      .day2-bg::before {
+        background-image:
+          linear-gradient(
+          rgba(0,0,0,0.75),
+          rgba(0,0,0,0.75)
+        ),
+        url('images/day2.JPG');
+    }
+
+      .day3-bg::before {
+        background-image:
+          linear-gradient(
+          rgba(0,0,0,0.75),
+          rgba(0,0,0,0.75)
+    ),
+    url('images/day3.JPG');
+    }
+
+    /* keep text above image */
+    .day2-bg > *,
+    .day3-bg > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    
   </style>
 </head>
 <body>
@@ -1023,7 +1105,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
     </div>
 
     <!-- DAY 2 -->
-    <div class="day-block">
+    <div class="day-block day2-bg">
       <div class="day-header">
         <span class="day-number">02</span>
         <div>
@@ -1052,7 +1134,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
     </div>
 
     <!-- DAY 3 -->
-    <div class="day-block">
+    <div class="day-block day3-bg">
       <div class="day-header">
         <span class="day-number">03</span>
         <div>
