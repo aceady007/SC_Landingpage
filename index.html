@@ -840,11 +840,11 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       </div>
       <div class="meta-item">
         <p class="meta-label">Arrival</p>
-        <p class="meta-value">Sunday at 3:00 PM</p>
+        <p class="meta-value">Saturday at 3:00 PM</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Closing</p>
-        <p class="meta-value">Tuesday at 2:30 PM</p>
+        <p class="meta-value">Tuesday at 9 AM</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Location</p>
@@ -1083,6 +1083,11 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
         <p class="artist-bio">
           Joe Chesbro is a salon owner, Redken Design Educator, and NAHA finalist dedicated to elevating the craft of haircutting. As the owner of Platinum Salon ROC and Platinum Suites, he blends creativity with ongoing education. Joe is also a Sam Villa Pro Tools ambassador, featured YouTube tutorial creator, and industry trend spotter. Through on-stage education and mentoring, his mission is to inspire growth and help stylists unlock their full potential.
         </p>
+        <button class="see-more-btn" onclick="toggleBio(this)">
+          See more
+        </button>
+        <br>
+        <br>
         <!-- ✏️ Replace with Joe's real Instagram URL -->
         <a href="https://www.instagram.com/joe_chesbro?igsh=MWgzZW81ZGYzdjczeg==" target="_blank" class="artist-ig">
           <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -1101,6 +1106,11 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
           Mastermynd facilitator and Kevin Murphy specialist whose sessions bridge the gap between product
           mastery and real-world business growth for modern salon owners.
         </p>
+        <button class="see-more-btn" onclick="toggleBio(this)">
+          See more
+        </button>
+        <br>
+        <br>
         <!-- ✏️ Replace with DeeJay's real Instagram URL and handle -->
         <a href="https://www.instagram.com/itsdeejay?igsh=cmk4M2cwdXY0emcz" target="_blank" class="artist-ig">
           <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -1294,11 +1304,14 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
           Our conference will take place at The Island Grand at Tradewinds Resort on St Pete Beach. We have a specific room block for our group and we have negotiated the lowest resort rates and free upgrades for our entire room block. Reservations must be made by clicking on the link below or by calling 1-800-808-9833 and giving the name Wholesale Beauty Supply Expo. Group pricing is $184/nt plus a $55 resort fee per room per night plus state and local tax of around 13%. Please review all info in the booking link regarding pricing, extra guests, parking and cancellation policy of the resort.
        </p>
 
-        <a href="https://book.passkey.com/go/WholesaleBeautyExpo?utm_source=1272&utm_medium=email&utm_campaign=300574669&trkid=615975893&linkid=4062150313" target="_blank">Resort Booking Site</a>
+        <a href="https://book.passkey.com/go/Wholesale
+          BeautyExpo?utm_source=1272&utm_med
+          ium=email&utm_campaign=300574669&t
+          rkid=615975893&linkid=4062150313" 
+          target="_blank">Resort Booking Site</a>
 
         </p>
-          https://book.passkey.com/go/WholesaleBeaut
-          yExpo?utm_source=1272&utm_medium=email&utm
+          https://book.passkey.com/go/WholesaleBeautyExpo?utm_source=1272&utm_medium=email&utm
           _campaign=300574669&trkid=615975893&linkid=4062150313
          <p>
           
