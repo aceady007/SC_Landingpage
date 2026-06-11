@@ -37,7 +37,22 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-    }   
+    } 
+
+    .agenda-photo{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      border-radius:20px;
+      margin:20px 0 25px;
+      border:1px solid rgba(212,175,55,0.25);
+      box-shadow:0 15px 40px rgba(0,0,0,0.35);
+      transition:transform .3s ease;
+    }
+
+.agenda-photo:hover{
+  transform:scale(1.01);
+}  
 
     .artist-bio {
       overflow: hidden;
@@ -940,10 +955,14 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       <div class="day-header">
         <span class="day-number">A</span>
         <div>
+          
           <p class="day-title">Arrival & Welcome Reception</p>
           <p class="day-date">Saturday, October 10, 2026</p>
         </div>
       </div>
+      <img src="images/DayA.JPG"
+            alt="Arrival Day"
+            class="agenda-photo">
 
       <div class="agenda-items">
         <div class="agenda-item">
@@ -975,6 +994,9 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
           <p class="day-date">Sunday, October 11, 2026</p>
         </div>
       </div>
+      <img src="images/day1.JPG"
+           alt="Redken Education"
+           class="agenda-photo">
 
       <div class="agenda-items">
         <div class="agenda-item">
