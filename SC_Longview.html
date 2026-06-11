@@ -1,0 +1,1487 @@
+cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3 Day Education Destination — St. Pete Beach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+
+    body {
+      background: #000;
+      color: white;
+    }
+
+    .artist-card {
+      padding: 2rem;
+      border-radius: 20px;
+    }
+    
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+
+      background-image:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('images/opening1.jpg');
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }   
+
+    .artist-bio {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      line-height: 1.6;
+    }
+
+    .artist-bio.expanded {
+      -webkit-line-clamp: unset;
+    }
+
+    .see-more-btn {
+      margin-top: 10px;
+      background: none;
+      border: none;
+      color: var(--gold);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+
+    /* ─────────────────────────────────────────
+       TOKENS
+    ───────────────────────────────────────── */
+    :root {
+      --black:      #0A0A0A;
+      --white:      #FDFCF8;
+      --gold:       #D4AF37;
+      --gold-light: #E7C85F;
+      --gold-dim:   rgba(212,175,55,0.18);
+      --sand:       #F5F0E8;
+      --muted:      #6B6660;
+      --border:     rgba(212,175,55,0.25);
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family:      var(--sans);
+      background-color: var(--black);
+      color:            var(--white);
+      line-height:      1.6;
+      overflow-x:       hidden;
+    }
+
+    /* ─────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────── */
+    nav {
+      position:        fixed;
+      top:             0; left: 0; right: 0;
+      z-index:         200;
+      display:         flex;
+      justify-content: space-between;
+      align-items:     center;
+      padding:         1.25rem 3rem;
+      background:      rgba(10,10,10,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom:   1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family:  var(--serif);
+      font-size:    1.25rem;
+      font-weight:  300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color:        var(--gold);
+    }
+
+    .nav-links {
+      display:    flex;
+      gap:        2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size:      0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color:          rgba(253,252,248,0.6);
+      text-decoration: none;
+      transition:     color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+   
+    /* subtle animated gold gradient orb */
+    .hero::before {
+      content:       '';
+      position:      absolute;
+      width:         700px;
+      height:        700px;
+      border-radius: 50%;
+      background:    radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      top:           50%;
+      left:          50%;
+      transform:     translate(-50%, -50%);
+      animation:     breathe 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.8; }
+      50%       { transform: translate(-50%, -50%) scale(1.15); opacity: 1;   }
+    }
+
+    .hero-eyebrow {
+      font-size:      0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color:          var(--gold);
+      margin-bottom:  1.5rem;
+      opacity:        0.85;
+    }
+
+    .hero h1 {
+      font-family:    var(--serif);
+      font-weight:    300;
+      font-size:      clamp(3rem, 7vw, 6rem);
+      line-height:    1.1;
+      letter-spacing: -0.01em;
+      margin-bottom:  0.4rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color:      var(--gold);
+    }
+
+    .hero-location {
+      font-family:    var(--serif);
+      font-size:      clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight:    300;
+      font-style:     italic;
+      color:          rgba(255,255,255,0.95);
+      margin-bottom:  2.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-meta {
+      display:     flex;
+      gap:         2.5rem;
+      justify-content: center;
+      flex-wrap:   wrap;
+      margin-bottom: 3rem;
+    }
+
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-label {
+      font-size: 0.7rem;
+      letter-spacing:0.2em;
+      text-transform: uppercase;
+      color: var(--gold) !important;
+      opacity: 1 !important;
+      font-weight: 600 !important;
+      margin-bottom: 0.3rem;
+    }
+
+    .meta-value {
+      font-size:   0.95rem;
+      font-weight: 300;
+      color:       rgba(253,252,248,0.9);
+    }
+
+    .gold-line {
+      width:        80px;
+      height:       1px;
+      background:   var(--gold);
+      margin:       0 auto 3rem;
+      opacity:      0.4;
+    }
+
+    .btn-gold {
+      display:        inline-block;
+      padding:        0.85rem 2.5rem;
+      border:         1px solid var(--gold);
+      color:          var(--gold);
+      font-size:      0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background:     transparent;
+      cursor:         pointer;
+      font-family:    var(--sans);
+      transition:     background 0.25s, color 0.25s;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold);
+      color:      var(--black);
+    }
+
+    /* ─────────────────────────────────────────
+       SHARED SECTION STYLES
+    ───────────────────────────────────────── */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin:   0 auto;
+    }
+
+    .section-eyebrow {
+      font-size:      0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color:          var(--gold);
+      margin-bottom:  1rem;
+      opacity:        0.75;
+    }
+
+    .section-heading {
+      font-family:  var(--serif);
+      font-size:    clamp(2rem, 4vw, 3rem);
+      font-weight:  300;
+      letter-spacing: 0.01em;
+      margin-bottom: 3rem;
+    }
+
+    .section-heading em { font-style: italic; color: var(--gold); }
+
+    hr.gold-rule {
+      border:     none;
+      border-top: 1px solid var(--border);
+      margin:     0;
+    }
+
+    /* ─────────────────────────────────────────
+       ABOUT / DESCRIPTION
+    ───────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-body p {
+      font-size:   1rem;
+      font-weight: 300;
+      color:       rgba(253,252,248,0.75);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-details {
+      border-left: 1px solid var(--border);
+      padding-left: 3rem;
+    }
+
+    .detail-row {
+      margin-bottom: 2rem;
+    }
+
+    .detail-label {
+      font-size:      0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color:          var(--gold);
+      margin-bottom:  0.5rem;
+      opacity:        0.75;
+    }
+
+    .detail-value {
+      font-family: var(--serif);
+      font-size:   1.25rem;
+      font-weight: 300;
+      color:       rgba(253,252,248,0.9);
+      line-height: 1.4;
+    }
+
+    /* ─────────────────────────────────────────
+       AGENDA
+    ───────────────────────────────────────── */
+    .agenda-section {
+      background:  #0F0F0F;
+      max-width:   100%;
+      padding:     6rem 2rem;
+    }
+
+    .agenda-inner {
+      max-width: 1100px;
+      margin:    0 auto;
+    }
+
+    .day-block { margin-bottom: 3.5rem; }
+
+    .day-header {
+      display:       flex;
+      align-items:   center;
+      gap:           1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .day-number {
+      font-family:    var(--serif);
+      font-size:      3rem;
+      font-weight:    300;
+      color:          var(--gold);
+      opacity:        0.35;
+      line-height:    1;
+      min-width:      60px;
+    }
+
+    .day-title {
+      font-family:  var(--serif);
+      font-size:    1.5rem;
+      font-weight:  300;
+    }
+
+    .day-date {
+      font-size:   0.75rem;
+      color:       var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .agenda-items {
+      border-left:  1px solid var(--border);
+      padding-left: 2rem;
+      margin-left:  30px;
+    }
+
+    .agenda-item {
+      display:       flex;
+      gap:           1.5rem;
+      padding:       1rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      align-items:   flex-start;
+    }
+
+    .agenda-item:last-child { border-bottom: none; }
+
+    .agenda-time {
+      flex: 0 0 150px;
+      white-space: nowrap;
+      color: var(--gold);
+}
+
+    .agenda-text {
+      font-size:   0.9rem;
+      font-weight: 300;
+      color:       rgba(253,252,248,0.8);
+      line-height: 1.6;
+    }
+
+    .agenda-text strong {
+      font-weight: 500;
+      color:       var(--white);
+      display:     block;
+      margin-bottom: 0.15rem;
+    }
+
+    /* ─────────────────────────────────────────
+       LINEUP
+    ───────────────────────────────────────── */
+    .lineup-grid {
+      display:               grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap:                   1.5px;
+      background:            var(--border);
+      border:                1px solid var(--border);
+    }
+
+    .artist-card {
+      background:  var(--black);
+      padding:     2.5rem;
+      transition:  background 0.25s;
+      cursor:      default;
+    }
+
+    .artist-card:hover { background: #111; }
+
+    .artist-avatar {
+      width:           72px;
+      height:          72px;
+      border-radius:   50%;
+      background:      var(--gold-dim);
+      border:          1px solid var(--border);
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      font-family:     var(--serif);
+      font-size:       1.5rem;
+      font-weight:     300;
+      color:           var(--gold);
+      margin-bottom:   1.5rem;
+      overflow:        hidden;
+    }
+
+    .artist-avatar img {
+      width:  100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .artist-role {
+      font-size:      0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color:          var(--gold);
+      opacity:        0.7;
+      margin-bottom:  0.5rem;
+    }
+
+    .artist-name {
+      font-family:   var(--serif);
+      font-size:     1.4rem;
+      font-weight:   300;
+      margin-bottom: 0.75rem;
+    }
+
+    .artist-bio {
+      font-size:   0.82rem;
+      font-weight: 300;
+      color:       rgba(253,252,248,0.6);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .artist-ig {
+      display:     inline-flex;
+      align-items: center;
+      gap:         0.5rem;
+      font-size:   0.72rem;
+      letter-spacing: 0.08em;
+      color:       var(--gold);
+      text-decoration: none;
+      opacity:     0.75;
+      transition:  opacity 0.2s;
+    }
+
+    .artist-ig:hover { opacity: 1; }
+
+    .ig-icon {
+      width:  16px;
+      height: 16px;
+      fill:   currentColor;
+    }
+
+    /* ─────────────────────────────────────────
+       RSVP / CONTACT FORM
+    ───────────────────────────────────────── 
+    
+    
+    
+    
+    
+    .rsvp-section {
+      background:  #0A0A0A;
+      max-width:   100%;
+      padding:     7rem 2rem;
+      text-align:  center;
+    }
+
+    .rsvp-inner {
+      max-width: 560px;
+      margin:    0 auto;
+    }
+
+    .rsvp-inner .section-heading { margin-bottom: 0.75rem; }
+
+    .rsvp-sub {
+      font-size:     0.9rem;
+      font-weight:   300;
+      color:         rgba(253,252,248,0.5);
+      margin-bottom: 2.5rem;
+      line-height:   1.7;
+    }
+
+    .form-row {
+      display:       flex;
+      flex-direction: column;
+      gap:           1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-field {
+      position: relative;
+    }
+
+    .form-field input {
+      width:          100%;
+      background:     #111;
+      border:         1px solid var(--border);
+      color:          var(--white);
+      padding:        1rem 1.25rem;
+      font-size:      0.9rem;
+      font-family:    var(--sans);
+      font-weight:    300;
+      outline:        none;
+      transition:     border-color 0.2s;
+    }
+
+    .form-field input::placeholder { color: rgba(253,252,248,0.3); }
+    .form-field input:focus        { border-color: var(--gold); }
+
+    .btn-gold-full {
+      width:          100%;
+      padding:        1rem;
+      background:     transparent;
+      border:         1px solid var(--gold);
+      color:          var(--gold);
+      font-size:      0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor:         pointer;
+      font-family:    var(--sans);
+      transition:     background 0.25s, color 0.25s;
+      margin-top:     0.5rem;
+    }
+
+    .btn-gold-full:hover {
+      background: var(--gold);
+      color:      var(--black);
+    }
+
+    .form-success {
+      display:       none;
+      padding:       1.5rem;
+      border:        1px solid var(--gold);
+      color:         var(--gold);
+      font-size:     0.85rem;
+      letter-spacing: 0.08em;
+      margin-top:    1rem;
+    }
+
+    .form-error {
+      color:     #e06060;
+      font-size: 0.78rem;
+      margin-top: 0.4rem;
+      display:   none;
+      text-align: left;
+    }
+      */
+
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+  }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+  }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      text-align: left;
+      padding: 1.5rem 0;
+      font-size: 1.1rem;
+      font-family: var(--serif);
+      cursor: pointer;
+  }
+
+    .faq-answer {
+      display: none;
+      padding-bottom: 1.5rem;
+  }
+
+    .faq-answer p,
+    .faq-answer li {
+      color: rgba(253,252,248,0.75);
+      line-height: 1.8;
+      font-weight: 300;
+  }
+
+    .faq-answer ul {
+      margin: 1rem 0 1rem 1.5rem;
+  }
+
+    .faq-item.active .faq-answer {
+      display: block;
+      color: var(--gold);
+  }
+
+    /* ─────────────────────────────────────────
+       ADMIN PANEL (hidden, toggle with button)
+    ───────────────────────────────────────── */
+    .admin-toggle {
+      display:        block;
+      margin:         1.5rem auto 0;
+      background:     none;
+      border:         none;
+      color:          rgba(253,252,248,0.2);
+      font-size:      0.7rem;
+      letter-spacing: 0.1em;
+      cursor:         pointer;
+      font-family:    var(--sans);
+      transition:     color 0.2s;
+    }
+
+    .admin-toggle:hover { color: rgba(253,252,248,0.5); }
+
+    .admin-panel {
+      display:    none;
+      max-width:  800px;
+      margin:     2rem auto 0;
+      text-align: left;
+    }
+
+    .admin-panel.open { display: block; }
+
+    .admin-header {
+      display:         flex;
+      justify-content: space-between;
+      align-items:     center;
+      padding:         1rem 1.5rem;
+      background:      #111;
+      border:          1px solid var(--border);
+      margin-bottom:   1px;
+    }
+
+    .admin-header h3 {
+      font-family:    var(--serif);
+      font-size:      1.1rem;
+      font-weight:    300;
+      color:          var(--gold);
+    }
+
+    .admin-count {
+      font-size:      0.72rem;
+      letter-spacing: 0.1em;
+      color:          var(--muted);
+    }
+
+    .admin-table {
+      width:           100%;
+      border-collapse: collapse;
+      font-size:       0.82rem;
+      background:      #0d0d0d;
+      border:          1px solid var(--border);
+    }
+
+    .admin-table th {
+      text-align:     left;
+      padding:        0.75rem 1rem;
+      font-size:      0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color:          var(--gold);
+      border-bottom:  1px solid var(--border);
+      font-weight:    400;
+      opacity:        0.75;
+    }
+
+    .admin-table td {
+      padding:       0.75rem 1rem;
+      color:         rgba(253,252,248,0.7);
+      border-bottom: 1px solid rgba(201,168,76,0.06);
+      font-weight:   300;
+    }
+
+    .admin-table tr:last-child td { border-bottom: none; }
+
+    .admin-empty {
+      text-align:  center;
+      padding:     2rem;
+      color:       var(--muted);
+      font-size:   0.82rem;
+      font-style:  italic;
+      background:  #0d0d0d;
+      border:      1px solid var(--border);
+      border-top:  none;
+    }
+
+    .btn-clear {
+      background:     none;
+      border:         1px solid rgba(200,80,80,0.35);
+      color:          rgba(200,80,80,0.6);
+      padding:        0.3rem 0.8rem;
+      font-size:      0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor:         pointer;
+      font-family:    var(--sans);
+      transition:     all 0.2s;
+    }
+
+    .btn-clear:hover { border-color: #e06060; color: #e06060; }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      border-top:      1px solid var(--border);
+      padding:         2.5rem 3rem;
+      display:         flex;
+      justify-content: space-between;
+      align-items:     center;
+      flex-wrap:       wrap;
+      gap:             1rem;
+    }
+
+    .footer-brand {
+      font-family:    var(--serif);
+      font-size:      1rem;
+      font-weight:    300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color:          var(--gold);
+      opacity:        0.7;
+    }
+
+    .footer-note {
+      font-size:   0.75rem;
+      color:       var(--muted);
+      font-weight: 300;
+    }
+
+    .footer-eb {
+      font-size:   0.75rem;
+      color:       var(--muted);
+    }
+
+    .footer-eb a {
+      color:          var(--gold);
+      text-decoration: none;
+      opacity:        0.8;
+    }
+
+    .footer-eb a:hover { opacity: 1; }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav          { padding: 1rem 1.5rem; }
+      .nav-links   { gap: 1.5rem; }
+
+      .about-grid  {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-details {
+        border-left:  none;
+        border-top:   1px solid var(--border);
+        padding-left: 0;
+        padding-top:  2rem;
+      }
+
+      section        { padding: 4rem 1.5rem; }
+      .agenda-section,
+      .rsvp-section  { padding: 4rem 1.5rem; }
+
+      .hero-meta { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAV
+  ════════════════════════════════════════ -->
+  <nav>
+    <span class="nav-logo">SalonCentric</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#lineup">Lineup</a></li>
+      <li><a href="#rsvp">FAQ</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <div class="hero">
+    <p class="hero-eyebrow">RDA Longview / Tyler Presents</p>
+
+    <h1>
+      3 Day Education<br />
+      <em>Destination</em>
+    </h1>
+
+    <p class="hero-location">Island Grand at TradeWinds · St. Pete Beach, FL</p>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <p class="meta-label">Dates</p>
+        <p class="meta-value">Oct 11 – 13, 2026</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Arrival</p>
+        <p class="meta-value">Sunday at 3:00 PM</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Closing</p>
+        <p class="meta-value">Tuesday at 2:30 PM</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Location</p>
+        <p class="meta-value">5500 Gulf Blvd, St. Pete Beach</p>
+      </div>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <a
+      href="https://forms.office.com/r/3weZ1SXuaC"
+      target="_blank"
+      class="btn-gold"
+>
+      Register Now ↗
+    </a>
+
+  </div>
+
+
+  <hr class="gold-rule" />
+
+
+  <!-- ═══════════════════════════════════════
+       ABOUT / DESCRIPTION
+  ════════════════════════════════════════ -->
+  <section id="about">
+    <p class="section-eyebrow">About the Event</p>
+    <h2 class="section-heading">Where Education<br /><em>Meets the Beach</em></h2>
+
+    <div class="about-grid">
+      <div class="about-body">
+        <p>
+          Redken artists and Mastermynd x Kevin Murphy facilitators join together for an incredible 3 day event on St. Pete Beach, FL!
+        </p>
+        <p>
+          This is more than a class. It's a destination experience designed to inspire, elevate, and connect.
+        </p>
+        <p>
+          Join us on St. Pete Beach, FL for two days of cut, color and finish with Joe & Anne Chesboro leading an elevated Look & Learn wit hands-in elements, followed by day three with Mastermynd Beauty x Kevin Murphy team bringing powerful buisness education and social media strategies.
+        </p>
+        <p>
+          Seats are limited. Registration is handled through our official form — this page is your invitation.
+        </p>
+      </div>
+
+      <div class="about-details">
+        <!-- ✏️ EDIT: Update these details as confirmed -->
+        <div class="detail-row">
+          <p class="detail-label">Venue</p>
+          <p class="detail-value">Island Grand at TradeWinds<br />St. Pete Beach, FL 33706</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Event Dates</p>
+          <p class="detail-value">Sunday, Oct 11 – Tuesday, Oct 13, 2026</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Check-in</p>
+          <p class="detail-value">Sunday, Oct 11 · 3:00 PM</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Closing Session</p>
+          <p class="detail-value">Tuesday, Oct 13 · 2:30 PM</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Parking</p>
+          <p class="detail-value">Paid parking available on site</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Refund Policy</p>
+          <p class="detail-value">No refunds</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <hr class="gold-rule" />
+
+
+  <!-- ═══════════════════════════════════════
+       AGENDA
+       ✏️ EDIT: Update times and session names
+          as the real agenda is confirmed
+  ════════════════════════════════════════ -->
+  <div class="agenda-section" id="agenda">
+    <div class="agenda-inner">
+      <p class="section-eyebrow">Schedule</p>
+      <h2 class="section-heading">3-Day <em>Agenda</em></h2>
+
+      <!-- DAY 1 -->
+      <div class="day-block">
+  <div class="day-header">
+    <span class="day-number">01</span>
+    <div>
+      <p class="day-title">Arrival & Welcome Celebration</p>
+      <p class="day-date">Saturday, October 10, 2026</p>
+    </div>
+  </div>
+
+  <div class="agenda-items">
+    <div class="agenda-item">
+      <span class="agenda-time">3:00 PM–6:00 PM</span>
+      <div class="agenda-text">
+        <strong>Arrival & Resort Check-In</strong>
+        Settle into the Island Grand at TradeWinds, explore the property, and prepare for an unforgettable education experience.
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <span class="agenda-time">6:30 PM–8:30 PM</span>
+      <div class="agenda-text">
+        <strong>Welcome Reception</strong>
+        Join us for an evening of light bites, cocktails, live music, and networking as we officially kick off the weekend. Meet your hosts, sponsors, and educators while connecting with fellow beauty professionals.
+        <br><br>
+        <em>Party Sponsored by Redken & Jolie.</em>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- DAY 2 -->
+      <div class="day-block">
+  <div class="day-header">
+    <span class="day-number">02</span>
+    <div>
+      <p class="day-title">Redken Education Experience</p>
+      <p class="day-date">Sunday, October 11, 2026</p>
+    </div>
+  </div>
+
+  <div class="agenda-items">
+    <div class="agenda-item">
+      <span class="agenda-time">8:00–9:00 AM</span>
+      <div class="agenda-text">
+        <strong>Complimentary Breakfast</strong>
+           Start the day with breakfast and networking before education begins.
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <span class="agenda-time">9:00 AM–2:00 PM</span>
+      <div class="agenda-text">
+        <strong>Redken Education with Anne & Joe Chesbro</strong>
+        Advanced color and cutting techniques designed to elevate technical skills, creativity, and confidence behind the chair.
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <span class="agenda-time">6:00–8:00 PM</span>
+      <div class="agenda-text">
+        <strong>Sunset Dinner Cruise</strong>
+        Enjoy an evening on the water with dinner, networking, and stunning Gulf Coast views.
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- DAY 3 -->
+      <div class="day-block">
+  <div class="day-header">
+    <span class="day-number">03</span>
+    <div>
+      <p class="day-title">Advanced Redken Education</p>
+      <p class="day-date">Monday, October 12, 2026</p>
+    </div>
+  </div>
+
+  <div class="agenda-items">
+    <div class="agenda-item">
+      <span class="agenda-time">8:00–9:00 AM</span>
+      <div class="agenda-text">
+        <strong>Complimentary Breakfast</strong>
+        Fuel up for another day of inspiration and education.
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <span class="agenda-time">9:00 AM–2:00 PM</span>
+      <div class="agenda-text">
+        <strong>Redken Education with Anne & Joe Chesbro</strong>
+        Continued advanced color and cutting education with hands-on insight, techniques, and professional development strategies.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <hr class="gold-rule" />
+
+
+  <!-- ═══════════════════════════════════════
+       LINEUP
+       ✏️ EDIT: Fill in each artist's real bio,
+          Instagram handle, and photo URL.
+          Replace the src="" in artist-avatar img
+          with a real photo URL or leave blank
+          for initials fallback.
+  ════════════════════════════════════════ -->
+  <section id="lineup">
+    <p class="section-eyebrow">Featured Educators</p>
+    <h2 class="section-heading">The <em>Lineup</em></h2>
+
+    <div class="lineup-grid">
+
+      <!-- ARTIST 1 -->
+      <div class="artist-card">
+        <!-- ✏️ Replace initials with <img src="photo.jpg"> if you have a photo -->
+        <div class="artist-avatar">
+          <img src="images/Anne_Headshot.JPG" alt="Anne Chesbro">
+        </div>
+        <p class="artist-role">Headliner · Redken Artist</p>
+        <h3 class="artist-name">Anne Chesbro</h3>
+        <p class="artist-bio">
+          Anne M. Chesbro is the CEO of Platinum Salon Suites LLC, COO and Co-Owner of Platinum Salon ROC, Inc., and a Redken Artist and Educator with more than 30 years of experience behind the chair. Specializing in hair color, formulation, corrective color, and color theory, she is passionate about helping stylists understand the science behind beautiful, predictable results. As a national educator, Anne has taught at premier industry events, advanced academies, and hands-on programs, translating complex haircolor concepts into practical techniques that build confidence behind the chair. She is also the creator of the Fact vs. Myth series on social media, where she combines peer-reviewed cosmetic science, manufacturer data, and salon experience to challenge industry misconceptions and promote evidence-based education. A NAHA nominee, salon owner, mentor, and business leader, Anne is dedicated to elevating the professional beauty industry through education, leadership, and a commitment to lifelong learning
+        </p>
+      <button class="see-more-btn" onclick="toggleBio(this)">
+        See more
+      </button>
+      <br>
+      <br>
+        <!-- ✏️ Replace # with Anne's real Instagram URL -->
+        <a href="#" target="_blank" class="artist-ig">
+          <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @annechesbro
+        </a>
+      </div>
+
+      <!-- ARTIST 2 -->
+      <div class="artist-card">
+        <div class="artist-avatar">
+          <img src="images/Joe_Headshot.JPG" alt="Anne Chesbro">
+        </div>
+        <p class="artist-role">Headliner · Redken Artist</p>
+        <h3 class="artist-name">Joe Chesbro</h3>
+        <p class="artist-bio">
+          Joe Chesbro is a salon owner, Redken Design Educator, and NAHA finalist dedicated to elevating the craft of haircutting. As the owner of Platinum Salon ROC and Platinum Suites, he blends creativity with ongoing education. Joe is also a Sam Villa Pro Tools ambassador, featured YouTube tutorial creator, and industry trend spotter. Through on-stage education and mentoring, his mission is to inspire growth and help stylists unlock their full potential.
+        </p>
+        <!-- ✏️ Replace with Joe's real Instagram URL -->
+        <a href="#" target="_blank" class="artist-ig">
+          <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @joechesbro
+        </a>
+      </div>
+
+      <!-- ARTIST 3 -->
+      <div class="artist-card">
+        <div class="artist-avatar">
+          <img src="images/DeeJay_Headshot.jpeg" alt="Anne Chesbro">
+        </div>
+        <p class="artist-role">REDKEN SUPPORTING ARTIST</p>
+        <h3 class="artist-name">DeeJay Swaney</h3>
+        <p class="artist-bio">
+          Mastermynd facilitator and Kevin Murphy specialist whose sessions bridge the gap between product
+          mastery and real-world business growth for modern salon owners.
+        </p>
+        <!-- ✏️ Replace with DeeJay's real Instagram URL and handle -->
+        <a href="#" target="_blank" class="artist-ig">
+          <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @deejayswaney
+        </a>
+      </div>
+
+      <!-- ARTIST 4 -->
+      <div class="artist-card">
+        <div class="artist-avatar">
+          <img src="images/Leslie_Headshot.PNG" alt="Anne Chesbro">
+        </div>
+        <p class="artist-role">REDKEN SUPPORTING ARTIST</p>
+        <h3 class="artist-name">Leslie Hilger</h3>
+        <p class="artist-bio">
+          Leslie Hilger is an educator of ten years helping facilitate ways to work smarter not harder for the everyday stylist. She takes a real world approach to her clientele and supports the concept that all it takes is an open and honest conversation to turn a first time guest into a life time client. When not working behind the chair or educating salons on all things Redken, Leslie enjoys spending time with her three children and reclaiming her health by going to the gym.
+        </p>
+        <button class="see-more-btn" onclick="toggleBio(this)">
+          See more
+        </button>
+        <br>
+        <br>
+        <!-- ✏️ Replace with Leslie's real Instagram URL and handle -->
+        <a href="#" target="_blank" class="artist-ig">
+          <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @lesliehilger
+        </a>
+      </div>
+
+      <!-- ARTIST 5 -->
+      <div class="artist-card">
+        <div class="artist-avatar">
+          <img src="images/Alison_Headshot.JPG" alt="Alison Rodriguez">
+        </div>
+        <p class="artist-role">Educator</p>
+        <h3 class="artist-name">Alison Rodriguez</h3>
+        <p class="artist-bio">
+          Alison Rodriguez-Jones is a salon owner, educator, and business leader with more than 20 years of experience in the beauty industry. Raised in a salon by her hairstylist mother, Alison developed a passion for the industry at an early age. After cosmetology school and gaining experience behind the chair, she co-founded Salon Bella Vi alongside her mother and sister, helping grow the business into a successful multi-location salon. For more than 12 years, Alison has led and mentored salon teams, developing future beauty professionals while building a culture centered on growth, leadership, and exceptional client experiences. Through Mastermynd Beauty, she is passionate about sharing the lessons, systems, and strategies that have helped her build a thriving salon business and empower others to do the same.
+        </p>
+        <button class="see-more-btn" onclick="toggleBio(this)">
+          See more
+        </button>
+        <br>
+        <br>
+        <!-- ✏️ Replace with Alison's real Instagram URL and handle -->
+        <a href="#" target="_blank" class="artist-ig">
+          <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @alisonrodriguez
+        </a>
+      </div>
+
+      <!-- ARTIST 6 -->
+      <div class="artist-card">
+        <div class="artist-avatar">
+          <img src="images/Mark_Headshot.PNG" alt="Anne Chesbro">
+        </div>
+        <p class="artist-role">Educator</p>
+        <h3 class="artist-name">Mark Rodriguez</h3>
+        <p class="artist-bio">
+          Mark Rodriguez is an entrepreneur, filmmaker, and business strategist who helps beauty professionals grow their businesses through modern marketing, social media, leadership, and AI-driven systems. As the founder of Mastermynd Media and co-founder of Mastermynd Beauty, he has spent the last decade helping brands and entrepreneurs build stronger connections, increase visibility, and drive sustainable growth. Known for combining creativity with practical business strategies, Mark works with salon owners, stylists, and beauty professionals to strengthen their personal brands, elevate the client experience, and create scalable businesses. His mission is to equip beauty professionals with the mindset, tools, and strategies needed to thrive in an ever-evolving industry.
+        </p>
+        <button class="see-more-btn" onclick="toggleBio(this)">
+          See more
+        </button>
+        <br>
+        <br>
+        <!-- ✏️ Replace with Mark's real Instagram URL and handle -->
+        <a href="#" target="_blank" class="artist-ig">
+          <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @markrodriguez
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <hr class="gold-rule" />
+
+
+  <!-- ═══════════════════════════════════════
+       RSVP / CONTACT FORM
+       Submissions are stored in localStorage
+       so they persist between visits.
+       View them by clicking "View submissions"
+       at the bottom of the form.
+  ════════════════════════════════════════ -->
+ <!-- <div class="rsvp-section" id="rsvp">
+    <div class="rsvp-inner">
+      <p class="section-eyebrow">Stay in the Loop</p>
+      <h2 class="section-heading">Express Your <em>Interest</em></h2>
+      <p class="rsvp-sub">
+        Leave your name, email, and phone number and we'll reach out with updates,
+        early-bird info, and registration reminders.
+      </p>
+
+      <div id="rsvp-form">
+        <div class="form-row">
+          <div class="form-field">
+            <input type="text" id="field-name" placeholder="Full Name" autocomplete="name" />
+            <p class="form-error" id="err-name">Please enter your name.</p>
+          </div>
+          <div class="form-field">
+            <input type="email" id="field-email" placeholder="Email Address" autocomplete="email" />
+            <p class="form-error" id="err-email">Please enter a valid email.</p>
+          </div>
+          <div class="form-field">
+            <input type="tel" id="field-phone" placeholder="Phone Number" autocomplete="tel" />
+            <p class="form-error" id="err-phone">Please enter your phone number.</p>
+          </div>
+        </div>
+        <button class="btn-gold-full" onclick="submitForm()">Submit Interest →</button>
+        <div class="form-success" id="form-success">
+          ✦ &nbsp; Thank you! We'll be in touch with event updates.
+        </div>
+      </div> -->
+<section id="faq">
+  <p class="section-eyebrow">Questions & Answers</p>
+  <h2 class="section-heading">Event <em>FAQ</em></h2>
+
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Tell me more about the trip!
+      </button>
+      <div class="faq-answer">
+        <p>
+         This is a destination event, to be able to set aside time for career and personal development, while taking a fun break at the same time! Redken artists, Joe and Anne Chesbro are two of the best in the industry at bringing new ideas and a deeper understanding to better your craft and your career. Rounding out the Redken team, we have local artists, DeeJay Swaney and Leslie Hilger to support our facilitators.
+        </p>
+
+        <p>
+          Mark and Alison with Mastermynd x Kevin Murphy bring the most updated information to give you what you need to be able to take your business, salon and social media to the next level. The Tradewinds Resort is a standout property to be able to enjoy the beach, great food and all that St. Pete has to offer! And the Salon Centric | RDA staff will be there with you, helping to ensure everything runs smoothly, support you in your journey, and help coordinate the fun!
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What makes this class unique?
+      </button>
+      <div class="faq-answer">
+        <p>
+          Besides being held at a resort, right on St. Pete beach, this event is designed to take a full schedule of information each day, and cram it into 5 hours, leaving us with time well spent, and several hours of daylight and nighttime, to enjoy the beach and the area. It can be a learning and refreshing getaway for yourself, a trip with the salon, or even a work trip/vacation mix, since there will be plenty of free time left to spend with a traveling companion.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What are the costs and what is included?
+      </button>
+      <div class="faq-answer">
+        <p>
+          The full 3-Day Education Destination experience is <strong>$899</strong>.
+        </p>
+
+        <p>
+          Other costs or expenses that you will be responsible for are the resort reservation, airfare, rental car if necessary, and companion tickets if you want to bring a guest to either of our group events.
+        </p>
+
+        <p>
+          Your ticket includes:
+        </p>
+
+        <ul>
+          <li>All educational sessions</li>
+          <li>Workshop materials and products</li>
+          <li>Continental breakfast and lunch on all education days</li>
+          <li>Welcome Party admission</li>
+          <li>Private Dinner Cruise admission</li>
+          <li>Exclusive gifts and event experiences</li>
+        </ul>
+
+        <p>
+          Other costs or expenses that you will be responsible for are the resort reservation, airfare, rental car if necessary, and companion tickets if you want to bring a guest to either of our group events.
+        </p>
+
+        <p>
+          Companion Ticket costs will be $120 for the welcome party, and $85 for the dinner cruise. Companion tickets can be added to your total payment plan.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I make my room reservations and what should I expect it to cost?
+      </button>
+      <div class="faq-answer">
+        <p>
+          Our conference will take place at The Island Grand at Tradewinds Resort on St Pete Beach. We have a specific room block for our group and we have negotiated the lowest resort rates and free upgrades for our entire room block. Reservations must be made by clicking on the link below or by calling 1-800-808-9833 and giving the name Wholesale Beauty Supply Expo. Group pricing is $184/nt plus a $55 resort fee per room per night plus state and local tax of around 13%. Please review all info in the booking link regarding pricing, extra guests, parking and cancellation policy of the resort.
+       </p>
+
+        <a href="https://book.passkey.com/go/WholesaleBeautyExpo?utm_source=1272&utm_medium=email&utm_campaign=300574669&trkid=615975893&linkid=4062150313" target="_blank">Visit Site</a>
+
+        </p>
+          https://book.passkey.com/go/WholesaleBeautyExpo?utm_source=1272&utm_medium=email&utm_campaign=300574669&trkid=615975893&linkid=4062150313
+         <p>
+          
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      <!-- Hidden admin toggle — only visible to organizers -->
+      <!--<button class="admin-toggle" onclick="toggleAdmin()">▸ View submissions</button>-->
+
+      <div class="admin-panel" id="admin-panel">
+        <div class="admin-header">
+          <h3>Submitted Contacts</h3>
+          <div style="display:flex;gap:1rem;align-items:center;">
+            <span class="admin-count" id="admin-count">0 entries</span>
+            <button class="btn-clear" onclick="clearAll()">Clear all</button>
+          </div>
+        </div>
+        <div id="admin-table-wrap"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer>
+    <span class="footer-brand">SalonCentric</span>
+    <span class="footer-note">3 Day Education Destination · St. Pete Beach, FL · Oct 11–13, 2026</span>
+    <span class="footer-eb">Official tickets: <a href="https://www.eventbrite.com/e/3-day-education-destination-st-pete-beach-tickets-1985000760710" target="_blank">Eventbrite ↗</a></span>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════
+       JAVASCRIPT — form logic & storage
+  ════════════════════════════════════════ -->
+  <script>
+    function toggleBio(button) {
+      const bio = button.previousElementSibling;
+
+      bio.classList.toggle('expanded');
+
+      if (bio.classList.contains('expanded')) {
+      button.textContent = 'See less';
+      } else {
+      button.textContent = 'See more';
+      }
+    }   
+
+    // ── STORAGE KEY ──────────────────────────
+    const STORAGE_KEY = 'saloncentric_rsvp_leads';
+
+    // ── LOAD saved entries from localStorage ─
+    function loadEntries() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    // ── SAVE entries back to localStorage ────
+    function saveEntries(entries) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+    }
+
+    // ── VALIDATE & SUBMIT the form ────────────
+    function submitForm() {
+      const name  = document.getElementById('field-name').value.trim();
+      const email = document.getElementById('field-email').value.trim();
+      const phone = document.getElementById('field-phone').value.trim();
+
+      // simple validation
+      let valid = true;
+
+      document.getElementById('err-name').style.display  = 'none';
+      document.getElementById('err-email').style.display = 'none';
+      document.getElementById('err-phone').style.display = 'none';
+
+      if (!name) {
+        document.getElementById('err-name').style.display = 'block';
+        valid = false;
+      }
+
+      if (!email || !email.includes('@')) {
+        document.getElementById('err-email').style.display = 'block';
+        valid = false;
+      }
+
+      if (!phone) {
+        document.getElementById('err-phone').style.display = 'block';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // save the entry
+      const entries = loadEntries();
+      entries.push({
+        name,
+        email,
+        phone,
+        date: new Date().toLocaleString()
+      });
+      saveEntries(entries);
+
+      // show success
+      document.getElementById('field-name').value  = '';
+      document.getElementById('field-email').value = '';
+      document.getElementById('field-phone').value = '';
+      document.getElementById('form-success').style.display = 'block';
+
+      // refresh admin table if it's open
+      renderAdminTable();
+    }
+
+    // ── TOGGLE admin panel ─────────────────────
+    function toggleAdmin() {
+      const panel = document.getElementById('admin-panel');
+      panel.classList.toggle('open');
+      if (panel.classList.contains('open')) renderAdminTable();
+    }
+
+    // ── RENDER admin table ─────────────────────
+    function renderAdminTable() {
+      const entries = loadEntries();
+      const wrap    = document.getElementById('admin-table-wrap');
+      const count   = document.getElementById('admin-count');
+
+      count.textContent = entries.length + ' entr' + (entries.length === 1 ? 'y' : 'ies');
+
+      if (entries.length === 0) {
+        wrap.innerHTML = '<div class="admin-empty">No submissions yet.</div>';
+        return;
+      }
+
+      let rows = entries.map((e, i) =>
+        `<tr>
+          <td>${i + 1}</td>
+          <td>${e.name}</td>
+          <td>${e.email}</td>
+          <td>${e.phone}</td>
+          <td>${e.date}</td>
+        </tr>`
+      ).join('');
+
+      wrap.innerHTML = `
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Submitted</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+
+    // ── CLEAR all entries ──────────────────────
+    function clearAll() {
+      if (confirm('Delete all submitted contacts? This cannot be undone.')) {
+        saveEntries([]);
+        renderAdminTable();
+      }
+    }
+
+
+  // FAQ
+
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        question.parentElement.classList.toggle('active');
+  });
+});
+
+  </script>
+
+</body>
+</html>
