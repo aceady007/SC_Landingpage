@@ -844,6 +844,75 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       .rsvp-section  { padding: 4rem 1.5rem; }
 
       .hero-meta { gap: 1.5rem; }
+      .agenda-section {
+        padding: 4rem 1rem;
+    }
+
+      .agenda-inner {
+        max-width: 100%;
+    }
+
+      .day-block,
+      .day2-bg,
+      .day3-bg {
+        padding: 24px 18px;
+        border-radius: 18px;
+    }
+
+      .day-header {
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+      .day-number {
+        font-size: 2.4rem;
+        min-width: 45px;
+    }
+
+      .day-title {
+        font-size: 1.25rem;
+        line-height: 1.25;
+    }
+
+      .day-date {
+        font-size: 0.7rem;
+    }
+
+      .agenda-photo {
+        height: 230px;
+        border-radius: 16px;
+    }
+
+      .agenda-items {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+    }
+
+      .agenda-item {
+        display: block;
+        padding: 1.25rem 0;
+    }
+
+      .agenda-time {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.45rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        color: var(--gold);
+        white-space: normal;
+    }
+
+      .agenda-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+      .agenda-text strong {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
     }
 
     /*_______
@@ -1079,7 +1148,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
 
       <div class="agenda-items">
         <div class="agenda-item">
-          <span class="agenda-time">8:00 PM–9:00 AM</span>
+          <span class="agenda-time">8:00 AM–9:00 AM</span>
           <div class="agenda-text">
             <strong>Complimentary Breakfast</strong>
             Start the day with breakfast and networking before education begins.
