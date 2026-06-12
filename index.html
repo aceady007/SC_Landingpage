@@ -853,6 +853,8 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
     }
 
       .day-block,
+      .dayA-bg,
+      .day1-bg,
       .day2-bg,
       .day3-bg {
         padding: 24px 18px;
@@ -918,6 +920,8 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
     /*_______
      day 2 and day 3 background 
      _________*/
+      .dayA-bg,
+      .day1-bg,
       .day2-bg,
       .day3-bg {
         position: relative;
@@ -927,18 +931,30 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
         margin-bottom: 40px;
     }
 
+      .dayA-bg::before,
+      .day1-bg::before,
       .day2-bg::before,
       .day3-bg::before {
         content: "";
         position: absolute;
         inset: 0;
         z-index: 0;
-
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
     }
 
+      .dayA-bg::before {
+        background-image:
+          linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+          url('images/DayA.JPG');
+    }
+
+      .day1-bg::before {
+        background-image:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+        url('images/day1.JPG');
+    }
       .day2-bg::before {
         background-image:
           linear-gradient(
@@ -958,6 +974,8 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
     }
 
     /* keep text above image */
+    .dayA-bg > *,
+    .day1-bg > *,
     .day2-bg > *,
     .day3-bg > * {
       position: relative;
@@ -1099,7 +1117,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
     <h2 class="section-heading">3-Day Education <em>Experience</em></h2>
 
     <!-- ARRIVAL DAY -->
-    <div class="day-block">
+    <div class="day-block dayA-bg">
       <div class="day-header">
         <span class="day-number">A</span>
         <div>
@@ -1108,9 +1126,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
           <p class="day-date">Saturday, October 10, 2026</p>
         </div>
       </div>
-      <img src="images/DayA.JPG"
-            alt="Arrival Day"
-            class="agenda-photo">
+      
 
       <div class="agenda-items">
         <div class="agenda-item">
@@ -1134,7 +1150,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
     </div>
 
     <!-- DAY 1 -->
-    <div class="day-block">
+    <div class="day-block day1-bg">
       <div class="day-header">
         <span class="day-number">01</span>
         <div>
@@ -1142,9 +1158,6 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
           <p class="day-date">Sunday, October 11, 2026</p>
         </div>
       </div>
-      <img src="images/day1.JPG"
-           alt="Redken Education"
-           class="agenda-photo">
 
       <div class="agenda-items">
         <div class="agenda-item">
