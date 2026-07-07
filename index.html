@@ -448,6 +448,33 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       margin-bottom: 0.15rem;
     }
 
+    .agenda-text p {
+      margin-bottom: 0.85rem;
+    }
+
+    .learn-label {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .session-list {
+      margin-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .session-list li {
+      margin-bottom: 0.45rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .session-list li::marker {
+      color: var(--gold);
+    }
+
     /* ─────────────────────────────────────────
        LINEUP
     ───────────────────────────────────────── */
@@ -1226,7 +1253,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       <div class="day-header">
         <span class="day-number">01</span>
         <div>
-          <p class="day-title">Day 1 · Redken Education Experience</p>
+          <p class="day-title">Day 1 · Redken Education Experience - Luxury Color, Cutting & Client Experience</p>
           <p class="day-date">Sunday, October 11, 2026</p>
         </div>
       </div>
@@ -1244,7 +1271,20 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
           <span class="agenda-time">9:00 AM–2:00 PM</span>
           <div class="agenda-text">
             <strong>Redken Education with Anne & Joe Chesbro</strong>
-            Advanced color and cutting techniques designed to elevate technical skill, creativity, and confidence behind the chair.
+            <p>
+              Over the first two days, you’ll immerse yourself in today’s most in-demand salon techniques while learning how to create premium experiences that keep clients coming back.
+            </p>
+
+            <p class="learn-label">You’ll learn:</p>
+
+            <ul class="session-list">
+              <li>Luxury gray blending & seamless gray transitions</li>
+              <li>Old Money Blonde techniques</li>
+              <li>Expensive brunette formulation & placement</li>
+              <li>Consultation strategies that build long-term client loyalty</li>
+              <li>Client retention through every stage of aging hair</li>
+              <li>Premium service techniques that increase client value</li>
+            </ul>
           </div>
         </div>
 
@@ -1263,7 +1303,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       <div class="day-header">
         <span class="day-number">02</span>
         <div>
-          <p class="day-title">Day 2 · Advanced Redken Education</p>
+          <p class="day-title">Day 2 · Advanced Redken Education - Continuing Your Luxury Salon Experience</p>
           <p class="day-date">Monday, October 12, 2026</p>
         </div>
       </div>
@@ -1292,7 +1332,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       <div class="day-header">
         <span class="day-number">03</span>
         <div>
-          <p class="day-title">Day 3 · Mastermynd × Kevin Murphy Business Intensive</p>
+          <p class="day-title">Day 3 · FUTURE PROOF - Mastermynd × Kevin Murphy Business Intensive - </p>
           <p class="day-date">Tuesday, October 13, 2026</p>
         </div>
       </div>
