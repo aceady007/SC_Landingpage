@@ -297,8 +297,8 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
     ───────────────────────────────────────── */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 60px;
       align-items: start;
     }
 
@@ -310,30 +310,61 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       margin-bottom: 1.2rem;
     }
 
-    .about-details {
-      border-left: 1px solid var(--border);
-      padding-left: 3rem;
+    .about-body h3,
+    .about-body h4 {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 28px 0 12px;
+    }
+
+    .about-body ul {
+      margin-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .about-body li {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .about-body li::marker {
+      color: var(--gold);
+    }
+
+    .about-details{
+      border-left:1px solid var(--border);
+      padding-left:40px;
+      position:sticky;
+      top:110px;
     }
 
     .detail-row {
-      margin-bottom: 2rem;
+      margin-bottom: 1.6rem;
     }
 
     .detail-label {
-      font-size:      0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color:          var(--gold);
-      margin-bottom:  0.5rem;
-      opacity:        0.75;
+      font-family:    var(--serif);
+      font-size:      1.25rem;
+      font-weight:    500;
+      color: var(--gold);
+      letter-spacing: 0;
+      text-transform: none;
+      margin-bottom:  0.4rem;
+      opacity:        1;
     }
 
     .detail-value {
       font-family: var(--serif);
-      font-size:   1.25rem;
+      font-size:   1.08rem;
       font-weight: 300;
-      color:       rgba(253,252,248,0.9);
-      line-height: 1.4;
+      color:       rgba(255,255,255,0.9);
+      line-height: 1.6;
     }
 
     /* ─────────────────────────────────────────
@@ -659,8 +690,8 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
 
     background-image:
       linear-gradient(
-      rgba(0,0,0,0.85),
-      rgba(0,0,0,0.85)
+      rgba(0,0,0,0.50),
+      rgba(0,0,0,0.50)
     ),
     url('images/faq.JPG');
 
@@ -829,14 +860,15 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
 
       .about-grid  {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 35px;
       }
 
       .about-details {
-        border-left:  none;
-        border-top:   1px solid var(--border);
-        padding-left: 0;
-        padding-top:  2rem;
+        position:static;
+        border-left:none;
+        border-top:1px solid var(--border);
+        padding-left:0;
+        padding-top:30px;
       }
 
       section        { padding: 4rem 1.5rem; }
@@ -1021,11 +1053,11 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
       </div>
       <div class="meta-item">
         <p class="meta-label">Arrival</p>
-        <p class="meta-value">Saturday at 3:00 PM</p>
+        <p class="meta-value">Saturday at 3:00 PM EST</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Closing</p>
-        <p class="meta-value">Tuesday at 9 AM</p>
+        <p class="meta-value">Tuesday at 2:30 PM EST</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Location</p>
@@ -1055,22 +1087,61 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
   <section id="about">
     <p class="section-eyebrow">About the Event</p>
     <h2 class="section-heading">Where Education<br /><em>Meets the Beach</em></h2>
-
     <div class="about-grid">
-      <div class="about-body">
-        <p>
-          Redken artists and Mastermynd x Kevin Murphy facilitators join together for an incredible 3 day event on St. Pete Beach, FL!
-        </p>
-        <p>
-          This is more than a class. It's a destination experience designed to inspire, elevate, and connect.
-        </p>
-        <p>
-          Join us on St. Pete Beach, FL for two days of cut, color and finish with Joe & Anne Chesboro leading an elevated Look & Learn with hands-in elements, followed by day three with Mastermynd Beauty x Kevin Murphy team bringing powerful buisness education and social media strategies.
-        </p>
-        <p>
-          Seats are limited. Registration is handled through our official form — this page is your invitation.
-        </p>
-      </div>
+    <div class="about-body">
+
+      <h3><strong>Key Takeaways</strong></h3>
+
+      <h4><strong>Gain Knowledge in Customizing Today's Top Trends</strong></h4>
+
+      <ul>
+        <li>Cowgirl Bob</li>
+        <li>Shullet (Shag / Mullet)</li>
+        <li>Chixie</li>
+        <li>Fringes</li>
+        <li>Bottleneck Fringe</li>
+        <li>Birkin Bangs</li>
+        <li>Micro Fringe</li>
+        <li>Glam Rock</li>
+        <li>Bombshell Layers</li>
+        <li>...and more!</li>
+      </ul>
+
+      <h4><strong>What You'll Gain</strong></h4>
+
+      <ul>
+        <li>Build confidence through real-world salon scenarios.</li>
+        <li>Master consultations that create trust and clear expectations.</li>
+        <li>Learn to customize color and haircut designs for every client.</li>
+        <li>Understand the <em>why</em> behind every professional decision.</li>
+        <li>Troubleshoot challenges with greater confidence.</li>
+        <li>Increase client loyalty, retention, and referrals.</li>
+        <li>Return to the salon with strategies you can use immediately.</li>
+      </ul>
+
+      <h4><strong>Experience Live Model Demonstrations</strong></h4>
+
+      <ul>
+        <li>Complete client transformations from consultation to finished style.</li>
+        <li>Live consultations and strategic planning.</li>
+        <li>Luxury color placement and formulation.</li>
+        <li>Precision haircutting techniques.</li>
+        <li>Modern finishing and styling.</li>
+        <li>Real-time problem-solving and decision-making.</li>
+        <li>Expert insights you can apply immediately behind the chair.</li>
+      </ul>
+
+      <h4><strong>Beyond the Technique — Learn to Think Like an Elite Stylist</strong></h4>
+
+       <ul>
+        <li>Adapt trends for real clients—not just recreate them.</li>
+        <li>Customize every service with confidence.</li>
+        <li>Strengthen your consultation and communication skills.</li>
+        <li>Build a premium client experience.</li>
+        <li>Grow your confidence, creativity, and career.</li>
+      </ul>
+
+    </div>
 
       <div class="about-details">
         <!-- ✏️ EDIT: Update these details as confirmed -->
@@ -1084,11 +1155,11 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
         </div>
         <div class="detail-row">
           <p class="detail-label">Check-in</p>
-          <p class="detail-value">Saturday, Oct 10 · 3:00 PM</p>
+          <p class="detail-value">Saturday, Oct 10 · 3:00 PM EST</p>
         </div>
         <div class="detail-row">
           <p class="detail-label">Closing Session</p>
-          <p class="detail-value">Tuesday, Oct 13 · 9 AM</p>
+          <p class="detail-value">Tuesday, Oct 13 · 2:30 PM EST</p>
         </div>
         <div class="detail-row">
           <p class="detail-label">Parking</p>
@@ -1100,6 +1171,7 @@ cat > /mnt/user-data/outputs/saloncentric-event.html << 'HTMLEOF'
         </div>
       </div>
     </div>
+  </div>
   </section>
 
 
